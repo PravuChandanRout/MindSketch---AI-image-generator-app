@@ -81,7 +81,7 @@ const usercredits = async (req, res) => {
 
     res.json({
       success: true,
-      credits: user.credit.creditBalance,
+      credits: user.creditBalance,
       user: { name: user.name },
     });
   } catch (error) {
