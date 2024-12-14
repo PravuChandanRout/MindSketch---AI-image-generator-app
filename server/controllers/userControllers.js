@@ -71,4 +71,26 @@ const loginUser = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser };
+// user credits api
+
+const usercredits = async (req, res) => {
+  try {
+    const { userId } = req.body;
+
+    const user = await userModel.findById(userId);
+
+    res.json({
+      success: true,
+      credits: user.credit.creditBalance,
+      user: { name: user.name },
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export { registerUser, loginUser, usercredits };
