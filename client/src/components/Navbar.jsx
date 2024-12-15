@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext.jsx";
 
 const Navbar = () => {
-  const { user, setShowLogin } = useContext(AppContext);
+  const { user, setShowLogin, logOut, credit } = useContext(AppContext);
   const navigate = useNavigate();
 
   return (
@@ -23,10 +23,10 @@ const Navbar = () => {
             >
               <img className="w-5" src={assets.credit_star} alt="" />
               <p className="text-xs sm:text-sm font-medium text-gray-700">
-                Credit left : 50
+                Credit left : {credit}
               </p>
             </button>
-            <p className="text-gray-700 max-sm:hidden pl-4">Hi, Chandan</p>
+            <p className="text-gray-700 max-sm:hidden pl-4">Hi, {user.name}</p>
             <div className="relative group">
               <img
                 src={assets.profile_icon}
@@ -35,7 +35,12 @@ const Navbar = () => {
               />
               <div className="absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12">
                 <ul className="list-none m-0 p-2 bg-white rounded-md border text-sm">
-                  <li className="py-1 px-2 pr-10 cursor-pointer">Logout</li>
+                  <li
+                    onClick={logOut}
+                    className="py-1 px-2 pr-10 cursor-pointer"
+                  >
+                    Logout
+                  </li>
                 </ul>
               </div>
             </div>
@@ -46,7 +51,10 @@ const Navbar = () => {
             <p onClick={() => navigate("/buy")} className="cursor-pointer">
               Pricing
             </p>
-            <button onClick={()=> setShowLogin(true)} className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-2 sm:px-10 text-sm rounded-md">
+            <button
+              onClick={() => setShowLogin(true)}
+              className="bg-blue-600 hover:bg-blue-800 text-white px-6 py-2 sm:px-10 text-sm rounded-md"
+            >
               Login
             </button>
           </div>
