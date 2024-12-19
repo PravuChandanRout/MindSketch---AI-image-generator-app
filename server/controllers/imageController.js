@@ -5,11 +5,11 @@ import axios from "axios";
 // image generate api
 export const generateImage = async (req, res) => {
   try {
-    const { userId, promt } = req.body;
+    const { userId, prompt } = req.body;
 
     const user = await userModel.findById(userId);
 
-    if (!user || !promt) {
+    if (!user || !prompt) {
       return res.json({
         success: false,
         message: "Missing Details",
