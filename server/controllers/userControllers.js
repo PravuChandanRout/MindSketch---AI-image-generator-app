@@ -1,8 +1,8 @@
-import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import razorpay from "razorpay";
 import transactionModel from "../models/transactionModel.js";
+import userModel from "../models/userModel.js";
 
 // sign up user api
 const registerUser = async (req, res) => {
